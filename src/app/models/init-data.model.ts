@@ -1,4 +1,4 @@
-export interface Section {
+export interface Result {
     id: string;
     type: string;
     sectionId: string;
@@ -12,7 +12,7 @@ export interface Section {
     pillarName: string;
 }
 
-export interface ApiData {
+export interface Response {
     status: string;
     userTier: string;
     total: number;
@@ -21,9 +21,9 @@ export interface ApiData {
     currentPage: number;
     pages: number;
     orderBy: string;
-    results: Section[];
+    results: Result[];
 }
 
-export interface ApiResponse{
-    response: ApiData;
+export interface RootObject {
+    response: Response;
 }

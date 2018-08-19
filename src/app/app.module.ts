@@ -15,37 +15,37 @@ import { HomePageComponent } from './views/home/home.component';
 import { PageNotFoundPageComponent } from './views/page-not-found/page-not-found.component';
 
 // modules
+import { SectionsModule } from './modules/sections/sections.module';
 import { HeaderModule } from './modules/header/header.module';
 import { FooterModule } from './modules/footer/footer.module';
-import { SearchModule } from './modules/search/search.module';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomePageComponent,
-        PageNotFoundPageComponent
-    ],
-    imports: [
-        Routing,
-        SearchModule,
-        BrowserModule,
-        NgReduxModule,
-        HeaderModule,
-        FooterModule
-    ],
-    providers: [
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    PageNotFoundPageComponent
+  ],
+  imports: [
+    Routing,
+    BrowserModule,
+    NgReduxModule,
+    SectionsModule,
+    HeaderModule,
+    FooterModule
+  ],
+  providers: [
 
-    ],
-    bootstrap: [
-        AppComponent
+  ],
+  bootstrap: [
+      AppComponent
     ]
 })
 
-export class AppModule {
+export class AppModule { 
     constructor(
         private _store: NgRedux<any>
     ) {
-        this._store.configureStore(initReducer, {});
+        this._store.configureStore(initReducer, {}); 
     }
 }
