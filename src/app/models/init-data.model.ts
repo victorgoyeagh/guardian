@@ -11,6 +11,14 @@ export interface Section {
     pillarId: string;
     pillarName: string;
 }
+export interface SearchResult {
+    id: string;
+    webTitle: string;
+    webUrl: string;
+    apiUrl: string;
+    editions: Edition[];
+    activeSponsorships: ActiveSponsorship[];
+}
 
 export interface ApiData {
     status: string;
@@ -26,4 +34,36 @@ export interface ApiData {
 
 export interface ApiResponse{
     response: ApiData;
+}
+
+
+export interface Edition {
+    id: string;
+    webTitle: string;
+    webUrl: string;
+    apiUrl: string;
+    code: string;
+}
+
+export interface SponsorLogoDimensions {
+    width: number;
+    height: number;
+}
+
+export interface HighContrastSponsorLogoDimensions {
+    width: number;
+    height: number;
+}
+
+export interface ActiveSponsorship {
+    sponsorshipType: string;
+    sponsorName: string;
+    sponsorLogo: string;
+    sponsorLink: string;
+    aboutLink: string;
+    sponsorLogoDimensions: SponsorLogoDimensions;
+    highContrastSponsorLogo: string;
+    highContrastSponsorLogoDimensions: HighContrastSponsorLogoDimensions;
+    validFrom: Date;
+    validTo: Date;
 }

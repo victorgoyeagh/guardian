@@ -3,6 +3,12 @@ table {
         th,td {
             border-width: 0px;
             padding: 0px;
-        } 
+            vertical-align: middle !important;
+            padding-left: 10px;
+
+            &:first-child {
+                padding-left: 0px;
+            }
+        }
     }
 }

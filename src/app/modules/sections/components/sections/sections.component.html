@@ -1,5 +1,18 @@
-<ul class="list-inline">
-    <li class="list-inline-item" *ngFor="let section of sections">
-        <a [routerLink]="['/']" [title]="section.sectionName">{{ section.sectionName }}</a>
-    </li>
-</ul>
+
+
+<div [ngSwitch]="true">
+
+    <ul class="list-inline" *ngSwitchCase="sectionDisplayType === DisplayType.List">
+        <li class="list-inline-item" *ngFor="let section of sections">
+            <a [routerLink]="['/']" [title]="section.webTitle">{{ section.webTitle }}</a>
+        </li>
+    </ul>
+
+    <form autocomplete="off" [formGroup]="sectionList" *ngSwitchCase="sectionDisplayType === DisplayType.Dropdown">
+        <select class="form-control" #selectSectionList formControlName="selectSectionList" id="selectSectionList" name="selectSectionList" (load)="saveSelectedValue($event)" (change)="saveSelectedValue($event)">
+            <option value="" selected="true">All</option>
+            <option *ngFor="let section of sections; let i = index;" [value]="section.id">{{ section.webTitle }}</option>
+        </select>
+    </form>
+
+</div>
