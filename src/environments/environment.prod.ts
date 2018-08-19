@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     config: {
-        siteName: "Guardian",
+        siteName: "Guardian"
         api: {
             url: "https://content.guardianapis.com/",
             credentials: {

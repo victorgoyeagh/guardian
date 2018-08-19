@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchInputValues } from './../../modules/search/models/search.model';
 
 @Component({
     selector: 'app-home',
@@ -7,18 +6,14 @@ import { SearchInputValues } from './../../modules/search/models/search.model';
     styleUrls: ['./home.component.scss']
 })
 export class HomePageComponent implements OnInit {
-    private SearchInputValues = <SearchInputValues>{
-        Keyword: undefined,
-        Section: undefined,
-        Path: 'search'
-    }
+    public searchTerm: string = undefined;
 
     constructor() { }
 
     ngOnInit() {
     }
 
-    performSearch(value: SearchInputValues) {
-        this.SearchInputValues = value;
+    performSearch(value: string) {
+        this.searchTerm = value;
     }
 }

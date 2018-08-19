@@ -7,13 +7,11 @@ import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/mate
 import { SearchService } from './services/search.service';
 import { CdkTableModule } from '@angular/cdk/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { SectionsModule } from '../sections/sections.module';
 
 @NgModule({
     imports: [
-        SectionsModule,
         RouterModule,
         NoopAnimationsModule,
         MatPaginatorModule,

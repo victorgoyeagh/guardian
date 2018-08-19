@@ -6,13 +6,12 @@ import { Http, Response as HttpResponse } from '@angular/http';
 import { GlobalService } from '../../../services/global.service';
 import * as Rx from 'rxjs';
 import { ApiData, Section, ApiResponse } from './../../../models/init-data.model';
-import { SearchInputValues } from './../../search/models/search.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SearchService {
-    public searchValue = new BehaviorSubject<SearchInputValues>(undefined);
+    public searchValue = new BehaviorSubject<string>('');
 
     constructor(
         private globalService: GlobalService,
@@ -20,18 +19,14 @@ export class SearchService {
         private http: Http
     ) { }
 
-    onSearchValueChanged(value: SearchInputValues) {
+    onSearchValueChanged(value: string) {
         this.searchValue.next(value);
     }
     
-    getTableData(searchValues: SearchInputValues){
-        
-        let url = this.globalService.getApiUrl(searchValues);
-        console.log(url);
-        
-        return this.http.get(url).switchMap((value: HttpResponse) => {
-            let response = <ApiResponse>value.json(),
-                data = <ApiData>response.response; 
+    getTableData(){
+        return this.http.get(this.globalService.getUrl('search')).switchMap((value: HttpResponse) => {
+            let response = <ApiResponse>value.json();
+            let data = <ApiData>response.response; 
             return Rx.of(<Array<Section>>data.results);
         })
     }

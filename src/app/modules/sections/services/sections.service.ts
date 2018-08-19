@@ -15,14 +15,12 @@ export class SectionsService {
         private globalService: GlobalService,
         private stateService: StateService,
         private http: Http
-    ) {}
+    ) { 
+        console.log(this.globalService.domain);
+    }
 
-    getSectionsData(path: string) {
-       return this.http.get(this.globalService.getApiUrl({
-           Section: undefined,
-           Keyword: undefined,
-           Path: 'sections'
-       })).switchMap((value: HttpResponse) => {
+    getInitialData() {
+       return this.http.get(this.globalService.getUrl('sections')).switchMap((value: HttpResponse) => {
            let response = <ApiResponse>value.json();
            let data = <ApiData>response.response; 
            return Rx.of(<Array<Section>>data.results);

@@ -5,13 +5,11 @@ import { SectionsService } from './services/sections.service';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { SearchModule } from '../search/search.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
-    ReactiveFormsModule, 
-    FormsModule,
+    SearchModule,
     RouterModule,
     CommonModule,
     HttpModule
