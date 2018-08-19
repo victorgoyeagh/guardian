@@ -1,0 +1,26 @@
+<div class="search">
+    <section>
+        <div class="col-12">
+            <form id="fmSearchPanel" name="fmSearchPanel" [formGroup]="fmSearchPanel" autocomplete="off">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <input #txtSearch formControlName="txtSearch" id="txtSearch" name="txtSearch" type="text" class="form-control form-control-sm"
+                            placeholder="Type a keyword" />
+                        <div *ngIf="!performDynamicSearch" class="input-group-append">
+                            <button (click)="performSearch()" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"
+                                    aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+                        <app-sections [SectionsDisplayType]="DisplayType.Dropdown" (OutputBroadcastSection)="updateSection($event)"></app-sections>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+</div>
+<hr />

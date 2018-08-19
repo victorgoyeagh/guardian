@@ -1,3 +1,6 @@
-<p>
-  home works!
-</p>
+<div class="home">
+    <label>Search</label>
+
+    <app-search (OutputSearchTerm)="performSearch($event)"></app-search>
+    <app-results [inputSearchValues]="SearchInputValues"></app-results>
+</div>
