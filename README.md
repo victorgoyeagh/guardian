@@ -1,6 +1,6 @@
 # GuardianApp
 
-#TODO://
+## TODO://
 
 use http interceptor to auto append api-key
 
@@ -15,6 +15,8 @@ complete styling
 unit testing
 
 localisation routing
+
+.....
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
