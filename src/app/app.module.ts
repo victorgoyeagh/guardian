@@ -43,6 +43,8 @@ import { SearchModule } from './modules/search/search.module';
 })
 
 export class AppModule {
+
+    // register redux store
     constructor(
         private _store: NgRedux<any>
     ) {

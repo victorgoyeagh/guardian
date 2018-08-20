@@ -1,12 +1,12 @@
 # GuardianApp
 
 #TODO://
-use interceptor to add api-key
-filter by date
+use http interceptor to auto append api-key
+column filtering (date, name, section)
 apply defaults in SearchInputValues interface
-fix pagination
+fix pagination & sync with api
 complete styling
-comments
+unit testing
 localisation routing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
