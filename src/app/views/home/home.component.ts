@@ -7,11 +7,7 @@ import { SearchInputValues } from './../../modules/search/models/search.model';
     styleUrls: ['./home.component.scss']
 })
 export class HomePageComponent implements OnInit {
-    private SearchInputValues = <SearchInputValues>{
-        Keyword: undefined,
-        Section: undefined,
-        Path: 'search'
-    }
+    public searchInputValues: SearchInputValues;
 
     constructor() { }
 
@@ -19,6 +15,7 @@ export class HomePageComponent implements OnInit {
     }
 
     performSearch(value: SearchInputValues) {
-        this.SearchInputValues = value;
+        console.log(value)
+        this.searchInputValues = value;
     }
 }

@@ -1,6 +1,6 @@
 <div class="home">
     <label>Search</label>
 
-    <app-search (OutputSearchTerm)="performSearch($event)"></app-search>
-    <app-results [inputSearchValues]="SearchInputValues"></app-results>
+    <app-search (OutputSearchTerm)="searchInputValues=$event"></app-search>
+    <app-results [inputSearchValues]="searchInputValues"></app-results>
 </div>

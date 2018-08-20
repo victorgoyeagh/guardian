@@ -5,6 +5,10 @@ import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DisplayType } from '../../models/sections.model';
 import { SearchInputValues } from './../../../search/models/search.model';
+import { NgRedux } from 'ng2-redux';
+import { StateService } from '../../../../state/services/state.service';
+
+
 @Component({
     selector: 'app-sections',
     templateUrl: './sections.component.html',
@@ -24,20 +28,22 @@ export class SectionsComponent implements OnInit, AfterViewInit {
     });
     private defaultSelected: string = '';
 
-    @ViewChild('#selectSectionList') selectSectionList: ElementRef;
-
     @Input() set SectionsDisplayType(value: DisplayType) {
         this.sectionDisplayType = value
     }
 
     constructor(
-        private sectionsService: SectionsService
+        private stateService: StateService,
+        private sectionsService: SectionsService,
+        private store: NgRedux<any>
     ) { }
 
     ngOnInit() {
-        this.sectionsService.getSectionsData('sections').subscribe((sections: Array<Section>) => {
-            this.sections = sections;
-        });
+        
+        // get data from state 
+        this.stateService.initLoadDataCompleted.subscribe((value) => {
+            this.sections = this.stateService.retrieveSectionsFromState();
+        })
     }
 
     ngAfterViewInit() {

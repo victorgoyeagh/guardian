@@ -1,5 +1,14 @@
 # GuardianApp
 
+#TODO://
+use interceptor to add api-key
+filter by date
+apply defaults in SearchInputValues interface
+fix pagination
+complete styling
+comments
+localisation routing
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 ## Development server

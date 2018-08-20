@@ -1,17 +1,18 @@
 
-import { InitialData } from './state.actions';
+import { InitialDataActions } from './state.actions';
 import { combineReducers, Reducer, createStore } from 'redux';
 
 export const initReducerInitState = {
-    Data: undefined
+    initData: undefined
 }
 
 export function initReducer(state: IInitReducer = initReducerInitState, action) {
     switch (action.type) {
-        case InitialData.SAVE_INIT_DATA:
+        case InitialDataActions.SAVE_INIT_DATA:
             let data = action.payload;
+            console.log('data saved');
             return {
-                Data: data
+                initData: data
             }
         default:
             return state;
@@ -27,5 +28,5 @@ export const RootReducer = combineReducers({
 });
 
 export interface IInitReducer {
-    Data: Array<any>
+    initData: Array<any>
 }

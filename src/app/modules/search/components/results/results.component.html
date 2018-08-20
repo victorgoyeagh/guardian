@@ -1,10 +1,10 @@
 <div class="results">
     <section>
-        <div *ngIf="!dataSource" class="col-12">
+        <div *ngIf="(!dataSource) || (this.dataSource.data.length == 0)" class="col-12">
             <p>Sorry no results</p>
         </div>
 
-        <div *ngIf="dataSource" class="col-12">
+        <div *ngIf="dataSource && this.dataSource.data.length > 0" class="col-12">
             <!-- (matSortChange)="sortData($event)" -->
 
             <div>
@@ -35,7 +35,7 @@
                 </table>
 
                 <hr />
-                <mat-paginator [pageSize]="10" length="100" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                <mat-paginator #matPaginator [pageIndex]="pageNo" [pageSize]="itemsPerPage" [length]="Math.ceil(this.sectionsData.total/this.itemsPerPage)" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
             </div>
         </div>
     </section>

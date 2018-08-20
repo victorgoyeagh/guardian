@@ -30,9 +30,9 @@ export class SearchService {
         console.log(url);
         
         return this.http.get(url).switchMap((value: HttpResponse) => {
-            let response = <ApiResponse>value.json(),
-                data = <ApiData>response.response; 
-            return Rx.of(<Array<Section>>data.results);
+            let response = <ApiResponse>value.json();
+             return  Rx.of(<ApiData>response.response); 
+            // return Rx.of(<Array<Section>>data.results);
         })
     }
 

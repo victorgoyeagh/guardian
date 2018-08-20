@@ -12,14 +12,18 @@ import { SearchInputValues } from './../../models/search.model';
     styleUrls: ['./search.component.scss'],
     outputs: ['OutputSearchTerm']
 })
-export class SearchComponent implements OnDestroy, AfterViewInit {
+export class SearchComponent implements OnDestroy, OnInit, AfterViewInit {
     public DisplayType = DisplayType;
     private subs: Subscription;
     private searchTerm: string;
     private searchInputValues: SearchInputValues = {
         Keyword: undefined,
         Section: undefined,
-        Path: 'search'
+        Path: 'search',
+        Page: 1,
+        PageSize: 10,
+        Pages: undefined,
+        OrderBy: ''
     };
     private searchSection: string;
     private performDynamicSearch: boolean = true;
@@ -27,14 +31,20 @@ export class SearchComponent implements OnDestroy, AfterViewInit {
         txtSearch: new FormControl('')
     })
 
-    @Output() OutputSearchTerm = new EventEmitter<any>();
+    @Output() OutputSearchTerm = new EventEmitter<SearchInputValues>();
     @ViewChild("txtSearch") txtSearch: ElementRef;
 
     constructor(
         private searchService: SearchService
     ) {
     }
-    
+
+    ngOnInit(){
+
+        this.OutputSearchTerm.emit(this.getSearchValues());
+
+    }
+
     ngAfterViewInit() {
 
         this.subs = fromEvent(<HTMLInputElement>this.txtSearch.nativeElement, "input")
@@ -54,14 +64,18 @@ export class SearchComponent implements OnDestroy, AfterViewInit {
                     this.searchService.onSearchValueChanged(this.getSearchValues());
                 }
             }
-        )
+        );
     }
 
     getSearchValues(){
         this.searchInputValues = <SearchInputValues>{
             Keyword: this.searchTerm,
             Section: this.searchSection,
-            Path: 'search'
+            Path: 'search',
+           Page: 1,
+           PageSize: 10,
+           Pages: undefined,
+           OrderBy: 'relevance'
         }
 
         return this.searchInputValues;

@@ -21,7 +21,11 @@ export class SectionsService {
        return this.http.get(this.globalService.getApiUrl({
            Section: undefined,
            Keyword: undefined,
-           Path: 'sections'
+           Path: 'sections',
+           Page: 1,
+           PageSize: 10,
+           Pages: undefined,
+           OrderBy: 'relevance'
        })).switchMap((value: HttpResponse) => {
            let response = <ApiResponse>value.json();
            let data = <ApiData>response.response; 
